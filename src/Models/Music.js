@@ -1,0 +1,29 @@
+const mongoose = require('../DataBase');
+
+const MusicSchema = new mongoose.Schema({
+    titulo: {
+        type: String,
+        require: true
+    },
+    estilo:{
+        type: String,
+        require: true
+    },
+    duracao: {
+        type: Number,
+        require: true
+    },
+    urlImage: {
+        type: String,
+        require: true
+    },
+    urlMusic: {
+        type: String,
+        require: true
+    }
+});
+
+const Music = mongoose.model("Musics", MusicSchema);
+
+module.exports = Music;
+
