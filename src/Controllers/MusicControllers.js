@@ -2,7 +2,8 @@ const Music = require('../Models/Music');
 
 module.exports = {
     async ListarMusicas(req, res) {
-        const musicas = await Music.find();
+        const { page = 1 } = req.query;
+        const musicas = await Music.paginate({ /* Wheres */}, {page, limit: 10});
 
         return res.json(musicas);
     },

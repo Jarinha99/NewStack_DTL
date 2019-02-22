@@ -1,4 +1,5 @@
 const mongoose = require('../DataBase');
+const mongoosePaginate = require('mongoose-paginate');
 
 const MusicSchema = new mongoose.Schema({
     titulo: {
@@ -22,6 +23,8 @@ const MusicSchema = new mongoose.Schema({
         require: true
     }
 });
+
+MusicSchema.plugin(mongoosePaginate);
 
 const Music = mongoose.model("Musics", MusicSchema);
 
