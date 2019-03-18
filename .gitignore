@@ -1,1 +1,3 @@
 configs.env
+tmp/
+node_modules/
