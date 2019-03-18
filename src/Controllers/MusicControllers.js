@@ -1,4 +1,5 @@
 const Music = require('../Models/Music');
+const fs = require('fs');
 
 module.exports = {
     async ListarMusicas(req, res) {
@@ -9,7 +10,6 @@ module.exports = {
     },
 
     async ListarMusicasByEstilo(req, res) {
-        //Forçando Commit
         const musicas = await Music.find({ 'estilo': req.params.estilo});
         
         return res.json(musicas);
@@ -19,6 +19,28 @@ module.exports = {
         const music = await Music.findById(req.params.id);
 
         return res.json(music);
+    },
+
+    async EnviarCapaMusica(req, res) {
+        console.log(req.file);
+
+        return res.json({filename: req.file.filename});
+    },
+
+    async EnviarArquivoMusica(req, res) {
+        console.log(req.file);
+
+        return res.json({hello: "Rocket"});
+    },
+
+    async DeletarCapaMusica(req, res) {
+        const id = req.params.id;
+
+        fs.unlink(`tmp/uploads/capas/${id}`, (err) => {
+            if (err) throw err;
+        });
+
+        return res.json({result: 'Capa Deletada com sucesso'})
     },
 
     async CriarMusica(req, res){

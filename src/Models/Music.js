@@ -14,13 +14,17 @@ const MusicSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    urlImage: {
+    ImageKey: {
         type: String,
         require: true
     },
-    urlMusic: {
+    MusicKey: {
         type: String,
         require: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
